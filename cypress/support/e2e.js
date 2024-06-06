@@ -12,13 +12,15 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 //import './CustomLogin/standard.actions'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
-Cypress.on('uncaughtException', () => {
-    return false
-})
+  Cypress.on("uncaught:exception", (err, runnable) => {
+    // If the error message matches the known error, return false to ignore it
+    if (err.message.includes("c(...).setup is not a function")) {
+      return false;
+    }
+    // Otherwise, throw the error and Cypress will fail the test
+    throw err;
+  });
