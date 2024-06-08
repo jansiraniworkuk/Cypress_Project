@@ -1,6 +1,5 @@
 Given(/^I launch the demoqa Site$/, () => {
   cy.visit("/");
-  cy.wait(1000);
 });
 
 When(/^I check the title of the demoqa page$/, () => {
@@ -12,11 +11,7 @@ Then("I should see the title as {string}", (title) => {
 });
 
 Given(/^I launch the Text box elements page$/, () => {
-  //cy.intercept("GET", "https://pagead2.googlesyndication.com/*").as("adLoad");
   cy.visit("/text-box");
-  //for (let i = 0; i < 6; i++) {
-  //  cy.wait("@adLoad");
-  //}
   cy.get("#userForm").should("be.visible");
 });
 
@@ -28,6 +23,7 @@ When(/^I click on elements link$/, () => {
   cy.get(":nth-child(1) > :nth-child(1) > .card-body > h5", {
     timeout: 20000,
   }).click();
+  cy.location('pathname').should('equal','/elements');
 });
 
 And(/^I should be able to fill the form$/, () => {
@@ -46,14 +42,12 @@ Then(/^I Submit the form$/, () => {
 And(/^I should see the entered message below$/, () => {
   const addedUserName = `Name:user`;
   const addedEmail = `Email:Jansi1@gmail.com`;
-  const addedCurrAdd = `Current Address :12, redbridge lane, IG45DG`;
+  const addedCurrAdd = `Current Address :12, redbridge lane, IG45DG `;
   const addedPerAdd = `Permananet Address :same as current address`;
   //Get the message from a text box
-  cy.contains("#name", addedUserName);
-  cy.contains("#email", addedEmail);
-  cy.contains(".border > #currentAddress", addedCurrAdd); //should
-  cy.contains(".border > #permanentAddress", addedPerAdd); //should
-  // cy.get("#email p").should(($p) => {
-  //   const shownEmail = $p.text().trim();
-  //   expect(shownEmail).to.equal(addedEmail);
+  cy.get("#name").should('have.text', addedUserName);
+  cy.get("#email").should('have.text', addedEmail);
+  cy.get(".border > #currentAddress").should('have.text', addedCurrAdd);
+  cy.get(".border > #permanentAddress").should('have.text',addedPerAdd);
+
 });
