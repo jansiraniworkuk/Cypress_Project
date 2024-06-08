@@ -24,3 +24,8 @@ import "./commands";
     // Otherwise, throw the error and Cypress will fail the test
     throw err;
   });
+
+  //To define the screenshot configuration for the failed scenarios. By default it is true.
+  Cypress.Screenshot.defaults({
+    screenshotOnRunFailure: false
+  })
