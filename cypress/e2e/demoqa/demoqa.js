@@ -44,7 +44,8 @@ And(/^I should see the entered message below$/, () => {
   const addedEmail = `Email:Jansi1@gmail.com`;
   const addedCurrAdd = `Current Address :12, redbridge lane, IG45DG `;
   const addedPerAdd = `Permananet Address :same as current address`;
-  //Get the message from a text box
+  
+  //Get the message from a text box and validate it
   cy.get("#name").should('have.text', addedUserName);
   cy.get("#email").should('have.text', addedEmail);
   cy.get(".border > #currentAddress").should('have.text', addedCurrAdd);

@@ -19,4 +19,6 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   defaultCommandTimeout: 10000,
   watchForFileChanges: true,
+  //Enable videos if it is required
+  video: false,
 });
