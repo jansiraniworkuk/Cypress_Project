@@ -10,7 +10,11 @@ module.exports = defineConfig({
       on("file:preprocessor", cucumber());
       // implement node event listeners here
     },
-    baseUrl: "https://demoqa.com/",
+    env: {
+      TAGS: '@connectivity' // Run only scenarios with the @connectivity tag
+    },
+    //baseUrl: "https://demoqa.com/",
+    baseUrl: "https://opensource-demo.orangehrmlive.com/",
     //To specify where the test files are located
     specPattern: "cypress/e2e/*.feature",
   },

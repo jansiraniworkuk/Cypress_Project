@@ -13,6 +13,9 @@ Then("I should see the title as {string}", (title) => {
 Given(/^I launch the Text box elements page$/, () => {
   cy.visit("/text-box");
   cy.get("#userForm").should("be.visible");
+  //chain of assertions. Also and will work like should here.
+  cy.get('#submit').should('contain', 'Submit').and('have.attr','type', 'button');
+
 });
 
 Then(/^I should see the Tools QA page$/, () => {
@@ -24,12 +27,15 @@ When(/^I click on elements link$/, () => {
     timeout: 20000,
   }).click();
   cy.location('pathname').should('equal','/elements');
+  
 });
 
 And(/^I should be able to fill the form$/, () => {
   cy.get("#userName").should("be.visible");
   cy.get("#userName").type("user");
   cy.get("#userEmail").type("Jansi1@gmail.com");
+
+  
   cy.get("#currentAddress").type("12, redbridge lane, IG45DG");
   cy.get("#permanentAddress").type("same as current address");
 });
@@ -47,8 +53,13 @@ And(/^I should see the entered message below$/, () => {
   
   //Get the message from a text box and validate it
   cy.get("#name").should('have.text', addedUserName);
-  cy.get("#email").should('have.text', addedEmail);
+  //cy.get("#email").should('have.text', addedEmail);
+  cy.get("#email").invoke('text').then((email)=>
+    {
+      expect(email).to.equal(addedEmail);
+    })
   cy.get(".border > #currentAddress").should('have.text', addedCurrAdd);
   cy.get(".border > #permanentAddress").should('have.text',addedPerAdd);
-
+  
+  cy.screenshot();
 });

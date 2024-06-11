@@ -16,6 +16,11 @@
 import "./commands";
 //import './CustomLogin/standard.actions'
 
+beforeEach(function() {
+  cy.log('I am executed before every test')
+})
+
+
   Cypress.on("uncaught:exception", (err, runnable) => {
     // If the error message matches the known error, return false to ignore it
     if (err.message.includes("c(...).setup is not a function")) {
