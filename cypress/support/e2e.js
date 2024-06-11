@@ -14,9 +14,8 @@
 // ***********************************************************
 // Import commands.js using ES2015 syntax:
 import "./commands";
-//import './CustomLogin/standard.actions'
 
-beforeEach(function() {
+beforeEach(() => {
   cy.log('I am executed before every test')
 })
 
