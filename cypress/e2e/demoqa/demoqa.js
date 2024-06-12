@@ -60,6 +60,6 @@ And(/^I should see the entered message below$/, () => {
     })
   cy.get(".border > #currentAddress").should('have.text', addedCurrAdd);
   cy.get(".border > #permanentAddress").should('have.text',addedPerAdd);
-  
   cy.screenshot();
+  cy.writeFile("./cypress/Data/enteredData.txt",addedUserName +"\n"+addedEmail +"\n"+addedCurrAdd +"\n"+addedPerAdd)
 });

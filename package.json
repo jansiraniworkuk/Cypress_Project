@@ -6,7 +6,9 @@
     "test": "echo I am the test",
     "hello": "echo hello world",
     "prehello": "echo I am pretest",
-    "posthello": "echo I am posttest"
+    "posthello": "echo I am posttest",
+    "jsonreport": "npx cypress run --reporter mochawesome",
+    "htmlreport": "npx marge cypress/report/mochawesome-report/mochawesome.json --reportDir cypress/reports"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +22,10 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "step_definitions": "cypress/e2e/demoqa"
+  },
+  "dependencies": {
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
   }
 }

@@ -1,0 +1,4 @@
+Name:user
+Email:hello@cypress.io
+Current Address :12, redbridge lane, IG45DG 
+Permananet Address :same as current address

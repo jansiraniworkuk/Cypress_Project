@@ -11,18 +11,25 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     env: {
-      TAGS: '@connectivity' // Run only scenarios with the @connectivity tag
+      TAGS: '@orangeHRM' // Run only scenarios with the @connectivity tag
     },
-    baseUrl: "https://demoqa.com/",
-    //baseUrl: "https://opensource-demo.orangehrmlive.com/",
+    baseUrl: "https://opensource-demo.orangehrmlive.com/",
     //To specify where the test files are located
     specPattern: "cypress/e2e/*.feature",
+    chromeWebSecurity: false,
   },
   viewportWidth: 900,
   viewportHeight: 1400,
-  chromeWebSecurity: false,
   defaultCommandTimeout: 10000,
   watchForFileChanges: true,
   //Enable videos if it is required - default value is true
   video: false,
+  reporter: "mochawesome",
+  reporterOptions: {
+      charts: true,
+      overwrite: true,
+      html: false,
+      json: true,
+      reportDir: "cypress/report/mochawesome-report"
+    }
 });
