@@ -33,9 +33,9 @@ When(/^I click on elements link$/, () => {
 And(/^I should be able to fill the form$/, () => {
   cy.get("#userName").should("be.visible");
   cy.get("#userName").type("user");
-  cy.get("#userEmail").type("Jansi1@gmail.com");
-
-  
+  cy.fixture('example.json').then((data) => {
+    cy.get("#userEmail").type(data.email);
+  })
   cy.get("#currentAddress").type("12, redbridge lane, IG45DG");
   cy.get("#permanentAddress").type("same as current address");
 });
@@ -47,7 +47,7 @@ Then(/^I Submit the form$/, () => {
 
 And(/^I should see the entered message below$/, () => {
   const addedUserName = `Name:user`;
-  const addedEmail = `Email:Jansi1@gmail.com`;
+  const addedEmail = `Email:hello@cypress.io`;
   const addedCurrAdd = `Current Address :12, redbridge lane, IG45DG `;
   const addedPerAdd = `Permananet Address :same as current address`;
   

@@ -13,8 +13,8 @@ module.exports = defineConfig({
     env: {
       TAGS: '@connectivity' // Run only scenarios with the @connectivity tag
     },
-    //baseUrl: "https://demoqa.com/",
-    baseUrl: "https://opensource-demo.orangehrmlive.com/",
+    baseUrl: "https://demoqa.com/",
+    //baseUrl: "https://opensource-demo.orangehrmlive.com/",
     //To specify where the test files are located
     specPattern: "cypress/e2e/*.feature",
   },
