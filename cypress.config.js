@@ -11,7 +11,9 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     env: {
-      TAGS: '@orangeHRM' // Run only scenarios with the @connectivity tag
+      // Run only scenarios with the @connectivity tag
+      TAGS: '@orangeHRM', 
+      step_definitions: "cypress/e2e/orangeHRM/"
     },
     baseUrl: "https://opensource-demo.orangehrmlive.com/",
     //To specify where the test files are located

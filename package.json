@@ -21,7 +21,7 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
-    "step_definitions": "cypress/e2e/demoqa"
+    "step_definitions": "cypress/e2e/"
   },
   "dependencies": {
     "mochawesome": "^7.1.3",

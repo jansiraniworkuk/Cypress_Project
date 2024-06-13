@@ -1,4 +1,4 @@
-import {LoginPage} from "../../support/orangeHRMlogin.js"
+import {LoginPage} from "../../../support/orangeHRMlogin"
 
 const loginPage = new LoginPage();
 
