@@ -20,5 +20,9 @@ export class LoginPage{
 
     }
     
+    getEmpSelector(row){
+        let empSelector = `":nth-child(row) > .oxd-table-row"`
+        return Cypress.Promise.resolve(`:nth-child(${row}) > .oxd-table-row`);
+    }
 
 }

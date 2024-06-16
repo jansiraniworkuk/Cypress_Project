@@ -20,8 +20,8 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/*.feature",
     chromeWebSecurity: false,
   },
-  viewportWidth: 900,
-  viewportHeight: 1400,
+  viewportWidth: 1500,
+  viewportHeight: 1500,
   defaultCommandTimeout: 10000,
   watchForFileChanges: true,
   //Enable videos if it is required - default value is true

@@ -1,4 +1,5 @@
-import {LoginPage} from "../../../support/orangeHRMlogin"
+import { LoginPage } from "../../../support/orangeHRMlogin";
+import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
 
 const loginPage = new LoginPage();
 
@@ -6,27 +7,38 @@ Given(/^I visit the orange HRM demo site$/, () => {
   cy.visit("/");
 });
 
-Then(/^I will be landed on the orangeJRM's homepage$/, () => {
-    cy.get('.orangehrm-login-branding > img').should('be.visible');
+And(/^I will be landed on the orangeJRM's homepage$/, () => {
+  cy.get(".orangehrm-login-branding > img").should("be.visible");
 });
 
-When(/^I login with the user name and password$/, () => {
-    loginPage.enterUserName('Admin')
-    loginPage.enterPassword('admin123')
-    loginPage.clickLogin()
+Given(/^I login with the user name and password$/, () => {
+  loginPage.enterUserName("Admin");
+  loginPage.enterPassword("admin123");
+  loginPage.clickLogin();
 });
 
-Then(/^I will be logged in successfully$/, () => {
-    cy.get('.oxd-topbar-header-breadcrumb > .oxd-text').should('be.visible')
+When(/^I click on PIM from LHN$/, () => {
+  cy.contains("PIM").should("be.visible");
+  cy.contains('span','PIM').click();
 });
 
-When(/^I login with invalid user name and password$/, () => {
-    loginPage.enterUserName('Admin123')
-    loginPage.enterPassword('admin123')
-    loginPage.clickLogin()
+Then(/^I can see the employees list$/, () => {
+  cy.log(location.pathname)
+  cy.location('pathname').should('equal', "/web/index.php/pim/viewEmployeeList")
+  cy.wait(5000)
 });
 
-Then(/^I will not be logged in$/, () => {
-    cy.get('.oxd-alert-content').should('be.visible')
-    cy.location('pathname').should('equal','/web/index.php/auth/login')
+And(/^I validate the employee from the row number (\d+)$/, (rowNumber) => {
+  loginPage.getEmpSelector(rowNumber).then((empSelector) =>{
+    cy.get(empSelector).should('be.visible')
+    //cy.get('.oxd-table').should('be.visible')
+    let empHeader = [];
+    cy.get('.oxd-table-header > .oxd-table-row').each(($el,index,$list) => {
+      empHeader.push($el.text());
+    }).then(() => {
+      cy.log(empHeader);
+    });
+
+  });
 });
+
