@@ -33,7 +33,7 @@ And(/^I validate the employee from the row number (\d+)$/, (rowNumber) => {
     cy.get(empSelector).should('be.visible')
     //cy.get('.oxd-table').should('be.visible')
     let empHeader = [];
-    cy.get('.oxd-table-header > .oxd-table-row').each(($el,index,$list) => {
+    cy.get('.oxd-table-header-cell.oxd-table-th').each(($el,index,$list) => {
       empHeader.push($el.text());
     }).then(() => {
       cy.log(empHeader);

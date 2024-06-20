@@ -2,15 +2,15 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 1,
-    "pending": 0,
+    "passes": 0,
+    "pending": 1,
     "failures": 0,
-    "start": "2024-06-16T19:54:17.364Z",
-    "end": "2024-06-16T19:54:27.626Z",
-    "duration": 10262,
+    "start": "2024-06-20T10:46:48.000Z",
+    "end": "2024-06-20T10:46:48.111Z",
+    "duration": 111,
     "testsRegistered": 1,
-    "passPercent": 100,
-    "pendingPercent": 0,
+    "passPercent": null,
+    "pendingPercent": 100,
     "other": 0,
     "hasOther": false,
     "skipped": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2bdf58bc-4426-4795-a062-a1b88acd12c6",
+      "uuid": "9dffc87a-11bf-4de3-b8f1-9af51d4dd15d",
       "title": "",
       "fullFile": "cypress/e2e/orangeHRM2.feature",
       "file": "cypress/e2e/orangeHRM2.feature",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "5c501548-dc95-484f-8e6a-89d3224e34b8",
+          "uuid": "e1afe383-41de-45c6-a821-ea6e12ed43ec",
           "title": "Validate Orange HRM demo site",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "Login to the orange HRM demo site with valid credentials",
               "fullTitle": "Validate Orange HRM demo site Login to the orange HRM demo site with valid credentials",
               "timedOut": null,
-              "duration": 10204,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
+              "duration": 41,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
               "fail": false,
-              "pending": false,
+              "pending": true,
               "context": null,
-              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {},
-              "uuid": "70fed45b-6f7c-4b0f-815e-4dc71cead896",
-              "parentUUID": "5c501548-dc95-484f-8e6a-89d3224e34b8",
+              "uuid": "8e7b48db-f3a9-4057-91d9-9d9af203193e",
+              "parentUUID": "e1afe383-41de-45c6-a821-ea6e12ed43ec",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "70fed45b-6f7c-4b0f-815e-4dc71cead896"
-          ],
+          "passes": [],
           "failures": [],
-          "pending": [],
+          "pending": [
+            "8e7b48db-f3a9-4057-91d9-9d9af203193e"
+          ],
           "skipped": [],
-          "duration": 10204,
+          "duration": 41,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
