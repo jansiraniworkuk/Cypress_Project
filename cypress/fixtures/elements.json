@@ -39,6 +39,11 @@
     "sign-up page heading" : "h1.text-xs-center",
     "have an account link" : "p.text-xs-center > a",
     "username text box" : "input[type=\"text\"]",
-    "sign in button" : "button[type=\"submit\"]"
+    "sign in button" : "button[type=\"submit\"]",
+
+    //After signin
+    "new post link" : "a.nav-link[href=\"#editor\"]",
+    "settings link" : "a.nav-link[href=\"#settings\"]",
+    "toggle feed buttons" : ".nav.nav-pills.outline-active"
 
 }

@@ -25,6 +25,7 @@ Feature: To validate the conduit application
         Given I visit the conduit web page
         When I navigate to sign in page
         Then I will be able to login to the conduit application
+        And I will be able to see all the elements on the home page after the login
 
 
 #End of scenario

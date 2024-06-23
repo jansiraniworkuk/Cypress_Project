@@ -44,4 +44,13 @@ export class CommonElements {
     cy.get(testIdMap["password input box"]).type("password1");
     cy.get(testIdMap["sign in button"]).click();
   }
+  validateElementsAfterSignIn(){
+
+  }
+  validateFeedTabsCount(count){
+    cy.get(testIdMap["toggle feed buttons"]) // Select parent with multiple classes
+    .find(".nav-link") // Find all child elements with the class 'nav-link'
+    .should("have.length", count);
+
+  }
 }

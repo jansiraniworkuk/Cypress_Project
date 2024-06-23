@@ -1,5 +1,5 @@
 import testIdMap from "../../fixtures/elements.json";
-import {CommonElements} from "../../support/conduitFunctions";
+import { CommonElements } from "../../support/conduitFunctions";
 
 const commonElements = new CommonElements();
 
@@ -8,7 +8,7 @@ Given(/^I visit the conduit web page$/, () => {
 });
 
 When(/^I navigate to sign in page$/, () => {
-  cy.contains("Sign in").click();
+  cy.get(testIdMap["nav link sign in"]).click();
 });
 
 Then(/^I will be able to see the signin page$/, () => {
@@ -29,7 +29,7 @@ And(/^I will be able to see all the elements of the signin page$/, () => {
 
   //verify the navigation links
   commonElements.validateNavLinks();
-  
+
   //verify input boxes
   commonElements.validateCommonInputBoxes();
 
@@ -76,6 +76,8 @@ Then(/^I will be able to see all the elements of the home page$/, () => {
   cy.get(testIdMap["global feed list"]).should("be.visible");
 
   cy.get(testIdMap["global feed tab"]).should("have.text", "Global Feed");
+
+  commonElements.validateFeedTabsCount(1);
 
   //verify the metadata of the posts
   cy.get(testIdMap.author).first().invoke("text").should("not.be.empty");
@@ -141,13 +143,42 @@ Then(/^I will be able to see all the elements of the signup page$/, () => {
 
   commonElements.validateNavLinks();
 
-  cy.get(testIdMap["username text box"])
-  .should("have.attr","placeholder","Username");
+  cy.get(testIdMap["username text box"]).should(
+    "have.attr",
+    "placeholder",
+    "Username"
+  );
 
   commonElements.validateSignInButton();
-
 });
 
 Then(/^I will be able to login to the conduit application$/, () => {
   commonElements.signIn();
+  
+  //Verify feed tabs
+  commonElements.validateFeedTabsCount(2);
+
+  cy.get(testIdMap["toggle feed buttons"])
+    .first()
+    .children()
+    .first()
+    .as("yourFeedElement");
+
+  cy.get("@yourFeedElement").should("have.text", "Your Feed");
+
+  cy.get(testIdMap["toggle feed buttons"])
+    .first()
+    .children()
+    .eq(1)
+    .should("have.text", "Global Feed");
+});
+
+And(/^I will be able to see all the elements on the home page after the login$/, () => {
+  commonElements.validateBrandIcon();
+
+  //verify navigation links
+  cy.get(testIdMap["nav link home on home page"]).should("be.visible");
+  cy.get(testIdMap["new post link"]).contains("New Post");
+  cy.get(testIdMap["settings link"]).contains("Settings");
+  cy.get(testIdMap["conduit tags container"]).should("be.visible");
 });
