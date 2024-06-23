@@ -12,9 +12,8 @@
     "navigation link sign up": ":nth-child(3) > .nav-link",
     "sign in page heading": "h1.text-xs-center",
     "register link from sign in page": "p.text-xs-center > a",
-    "email input box from sign in page": ":nth-child(1) > .form-control",
-    "password input box from sign in page": ":nth-child(2) > .form-control",
-    "sign in button": "button.btn.btn-lg.btn-primary.pull-xs-right",
+    "email input box": "input[type=\"email\"",
+    "password input box": "input[type=\"password\"",
     
     //Home page elements
     "nav link home on home page": ".container > .nav > :nth-child(1) > .nav-link",
@@ -34,6 +33,12 @@
     "preview tag list" : ".tag-list",
     "pagination container" : ".pagination",
     "page link" : ".page-link",
-    "selected page" : ".active > .page-link"
+    "selected page" : ".active > .page-link",
+
+    //sign-up page elements
+    "sign-up page heading" : "h1.text-xs-center",
+    "have an account link" : "p.text-xs-center > a",
+    "username text box" : "input[type=\"text\"]",
+    "sign in button" : "button[type=\"submit\"]"
 
 }
