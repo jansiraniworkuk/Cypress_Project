@@ -1,15 +1,39 @@
 {
     //List of elements used in conduit application
-    //signin page elements
+    //general elements
     "brand icon": "a.navbar-brand",
+    
+    //signin page elements
     "navigation link home": ":nth-child(1) > .nav-link",
+    "nav link sign in": ":nth-child(2) > .nav-link",
+    "nav link sign up": ":nth-child(3) > .nav-link",
+    "nav link home on sign in page": ":nth-child(1) > .nav-link",
     "navigation link sign-in": ":nth-child(2) > .nav-link",
     "navigation link sign up": ":nth-child(3) > .nav-link",
     "sign in page heading": "h1.text-xs-center",
     "register link from sign in page": "p.text-xs-center > a",
     "email input box from sign in page": ":nth-child(1) > .form-control",
     "password input box from sign in page": ":nth-child(2) > .form-control",
-    "sign in button": "button.btn.btn-lg.btn-primary.pull-xs-right"
+    "sign in button": "button.btn.btn-lg.btn-primary.pull-xs-right",
     
+    //Home page elements
+    "nav link home on home page": ".container > .nav > :nth-child(1) > .nav-link",
+    "conduit banner": "div.banner",
+    "conduit logo header" : "h1.logo-font",
+    "conduit tag line" : ".container > p",
+    "conduit tags container" : "div.sidebar",
+    "popular tags list" : "div.sidebar > .tag-list",
+    "global feed list" : ".col-md-9",
+    "global feed tab" : ".nav-link.active",
+    "article metadata" : ".article-preview",
+    "author" : ".author",
+    "article preview" : ".preview-link > p",
+    "like count" : "button.btn.btn-sm.btn-outline-primary > .ion-heart",
+    "like button" : "button.btn.btn-sm.btn-outline-primary",
+    "read more link" : ":nth-child(3) > .preview-link > span",
+    "preview tag list" : ".tag-list",
+    "pagination container" : ".pagination",
+    "page link" : ".page-link",
+    "selected page" : ".active > .page-link"
 
 }

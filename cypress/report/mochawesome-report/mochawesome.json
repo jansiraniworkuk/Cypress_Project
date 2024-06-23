@@ -5,8 +5,8 @@
     "passes": 0,
     "pending": 1,
     "failures": 0,
-    "start": "2024-06-20T10:46:48.000Z",
-    "end": "2024-06-20T10:46:48.111Z",
+    "start": "2024-06-21T15:54:38.977Z",
+    "end": "2024-06-21T15:54:39.088Z",
     "duration": 111,
     "testsRegistered": 1,
     "passPercent": null,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "9dffc87a-11bf-4de3-b8f1-9af51d4dd15d",
+      "uuid": "7995ad98-2497-4e84-8191-55a741851bcf",
       "title": "",
       "fullFile": "cypress/e2e/orangeHRM2.feature",
       "file": "cypress/e2e/orangeHRM2.feature",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e1afe383-41de-45c6-a821-ea6e12ed43ec",
+          "uuid": "978dee0e-3053-4ea6-b16e-75ec68a54829",
           "title": "Validate Orange HRM demo site",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Login to the orange HRM demo site with valid credentials",
               "fullTitle": "Validate Orange HRM demo site Login to the orange HRM demo site with valid credentials",
               "timedOut": null,
-              "duration": 41,
+              "duration": 58,
               "state": "pending",
               "speed": null,
               "pass": false,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {},
-              "uuid": "8e7b48db-f3a9-4057-91d9-9d9af203193e",
-              "parentUUID": "e1afe383-41de-45c6-a821-ea6e12ed43ec",
+              "uuid": "f90d5d8d-bf4a-4e8a-bcff-b3b2e4f211d6",
+              "parentUUID": "978dee0e-3053-4ea6-b16e-75ec68a54829",
               "isHook": false,
               "skipped": false
             }
@@ -57,10 +57,10 @@
           "passes": [],
           "failures": [],
           "pending": [
-            "8e7b48db-f3a9-4057-91d9-9d9af203193e"
+            "f90d5d8d-bf4a-4e8a-bcff-b3b2e4f211d6"
           ],
           "skipped": [],
-          "duration": 41,
+          "duration": 58,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
