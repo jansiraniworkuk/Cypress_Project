@@ -48,6 +48,7 @@ export class CommonElements {
     cy.get(testIdMap["nav link home on home page"]).should("be.visible");
   cy.get(testIdMap["new post link"]).contains("New Post");
   cy.get(testIdMap["settings link"]).contains("Settings");
+  cy.get(testIdMap["profile link"]).contains("Jansi");
   cy.get(testIdMap["conduit tags container"]).should("be.visible");
 
   cy.get(testIdMap["toggle feed buttons"])

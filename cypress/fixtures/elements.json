@@ -44,6 +44,7 @@
     //After signin
     "new post link" : "a.nav-link[href=\"#editor\"]",
     "settings link" : "a.nav-link[href=\"#settings\"]",
-    "toggle feed buttons" : ".nav.nav-pills.outline-active"
+    "toggle feed buttons" : ".nav.nav-pills.outline-active",
+    "profile link" : "a.nav-link[href=\"#@Jansi\""
 
 }
