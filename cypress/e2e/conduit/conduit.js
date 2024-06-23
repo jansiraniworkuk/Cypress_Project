@@ -80,30 +80,7 @@ Then(/^I will be able to see all the elements of the home page$/, () => {
   commonElements.validateFeedTabsCount(1);
 
   //verify the metadata of the posts
-  cy.get(testIdMap.author).first().invoke("text").should("not.be.empty");
-
-  cy.get(testIdMap["article preview"])
-    .first()
-    .invoke("text")
-    .should("not.be.empty");
-
-  cy.get(testIdMap["like button"]).should(
-    "have.css",
-    "color",
-    "rgb(92, 184, 92)"
-  );
-
-  cy.get(testIdMap["like button"])
-    .first() // Pick the first element
-    .should("be.visible") // Ensure the element is visible
-    .invoke("text")
-    .then((text) => {
-      expect(text).not.to.be.empty; // Assert that the text is not empty
-    });
-
-  cy.get(testIdMap["read more link"]).should("have.text", "Read more...");
-
-  cy.get(testIdMap["preview tag list"]).first().should("be.visible");
+  commonElements.validateGlobalFeedTab();
 });
 
 And(/^I can scroll down the page$/, () => {
@@ -177,8 +154,9 @@ And(/^I will be able to see all the elements on the home page after the login$/,
   commonElements.validateBrandIcon();
 
   //verify navigation links
-  cy.get(testIdMap["nav link home on home page"]).should("be.visible");
-  cy.get(testIdMap["new post link"]).contains("New Post");
-  cy.get(testIdMap["settings link"]).contains("Settings");
-  cy.get(testIdMap["conduit tags container"]).should("be.visible");
+  commonElements.validateElementsAfterSignIn();
+  commonElements.validateGlobalFeedTab();
+    
 });
+
+
