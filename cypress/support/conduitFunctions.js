@@ -1,6 +1,9 @@
 import testIdMap from "../fixtures/elements.json"
 export class CommonElements {
   //verify navigation links on the home page
+  launchConduit(){
+    cy.visit("/");
+  }
   validateNavLinks() {
     cy.get(testIdMap["nav link home on home page"])
       .should("have.text", "Home")
@@ -40,6 +43,7 @@ export class CommonElements {
     .should("have.css", "background-color", "rgb(92, 184, 92)");
   }
   signIn(){
+    cy.get(testIdMap["nav link sign in"]).click();
     cy.get(testIdMap["email input box"]).type("Jansi@gmail.com");
     cy.get(testIdMap["password input box"]).type("password1");
     cy.get(testIdMap["sign in button"]).click();

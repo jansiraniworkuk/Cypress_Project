@@ -4,7 +4,7 @@ import { CommonElements } from "../../support/conduitFunctions";
 const commonElements = new CommonElements();
 
 Given(/^I visit the conduit web page$/, () => {
-  cy.visit("/");
+  commonElements.launchConduit();
 });
 
 When(/^I navigate to sign in page$/, () => {
@@ -57,10 +57,8 @@ Then(/^I will be able to see all the elements of the home page$/, () => {
 
   cy.get(testIdMap["conduit logo header"]).should("have.text", "conduit");
 
-  cy.get(testIdMap["conduit tag line"]).should(
-    "have.text",
-    "A place to share your knowledge."
-  );
+  cy.get(testIdMap["conduit tag line"])
+  .should("have.text","A place to share your knowledge.");
 
   //verify the tag list is shown
 
@@ -159,4 +157,27 @@ And(/^I will be able to see all the elements on the home page after the login$/,
     
 });
 
+Given(/^I login to the conduit web page$/, () => {
+  commonElements.launchConduit();
+  commonElements.signIn();
+});
+
+When(/^I create few posts in conduit web page$/, () => {
+  commonElements.launchConduit();
+  commonElements.signIn();
+  cy.get(testIdMap["new post link"]).click();
+  cy.get(testIdMap["article title"]).should('be.visible');
+  cy.get(testIdMap["article about"]).should('be.visible');
+  cy.get(testIdMap["article content"]).should('be.visible');
+  cy.get(testIdMap["addition of tags"]).should('be.visible');
+  cy.get(testIdMap["publish article button"]).should('be.visible');
+});
+
+Then(/^I will be able to see them under Global Feed$/, () => {
+  cy.get(testIdMap["new post link"]).click();
+});
+
+And(/^I will be able to see them under Your Feed as well$/, () => {
+  cy.get(testIdMap["new post link"]).click();
+});
 

@@ -45,6 +45,13 @@
     "new post link" : "a.nav-link[href=\"#editor\"]",
     "settings link" : "a.nav-link[href=\"#settings\"]",
     "toggle feed buttons" : ".nav.nav-pills.outline-active",
-    "profile link" : "a.nav-link[href=\"#@Jansi\""
+    "profile link" : "a.nav-link[href=\"#@Jansi\"",
+
+    //new post page
+    "article title" : "input[placeholder=\"Article Title\"]",
+    "article about" : "input[placeholder=\"What's this article about?\"]",
+    "article content" : "textarea[placeholder=\"Write your article (in markdown)\"]",
+    "addition of tags" : "input[placeholder=\"Enter tags\"]",
+    "publish article button" : "button[type=\"button\"]"
 
 }
