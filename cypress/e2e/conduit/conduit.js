@@ -73,7 +73,7 @@ Then(/^I will be able to see all the elements of the home page$/, () => {
   //verify the global feed list elements are shown
   cy.get(testIdMap["global feed list"]).should("be.visible");
 
-  cy.get(testIdMap["global feed tab"]).should("have.text", "Global Feed");
+  cy.contains(testIdMap["global feed tab"]).should("have.text", "Global Feed");
 
   commonElements.validateFeedTabsCount(1);
 
@@ -166,18 +166,32 @@ When(/^I create few posts in conduit web page$/, () => {
   commonElements.launchConduit();
   commonElements.signIn();
   cy.get(testIdMap["new post link"]).click();
-  cy.get(testIdMap["article title"]).should('be.visible');
-  cy.get(testIdMap["article about"]).should('be.visible');
-  cy.get(testIdMap["article content"]).should('be.visible');
-  cy.get(testIdMap["addition of tags"]).should('be.visible');
-  cy.get(testIdMap["publish article button"]).should('be.visible');
+  commonElements.validateElementsInPostCommentPage();
+
+  // Intercept the request and provide a stub response
+  cy.fixture('stubResponses').then((stubResponses) => {
+    cy.intercept('POST', 'https://conduit.productionready.io/api/articles', {
+      statusCode: 201,
+      body: stubResponses.createPost
+    }).as('createPost');
+  });
+  
+  
+    cy.get(testIdMap["article title"]).type("Article1");
+    cy.get(testIdMap["article about"]).type("about article1");
+    cy.get(testIdMap["article content"]).type("content of article1");
+    cy.get(testIdMap["addition of tags"]).type("article1");
+    cy.get(testIdMap["publish article button"]).click();
+
+    cy.wait('@createPost');
+    
 });
 
 Then(/^I will be able to see them under Global Feed$/, () => {
-  cy.get(testIdMap["new post link"]).click();
+  cy.get(testIdMap["nav link home on sign in page"]).click();
 });
 
 And(/^I will be able to see them under Your Feed as well$/, () => {
-  cy.get(testIdMap["new post link"]).click();
+  cy.contains(testIdMap["global feed tab"]).click();
 });
 

@@ -23,7 +23,7 @@
     "conduit tags container" : "div.sidebar",
     "popular tags list" : "div.sidebar > .tag-list",
     "global feed list" : ".col-md-9",
-    "global feed tab" : ".nav-link.active",
+    "global feed tab" : "Global Feed",
     "article metadata" : ".article-preview",
     "author" : ".author",
     "article preview" : ".preview-link > p",

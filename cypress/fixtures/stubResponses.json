@@ -1,0 +1,20 @@
+{
+  "createPost": {
+    "article": {
+      "title": "Article1",
+      "description": "about article1",
+      "body": "content of article1",
+      "tagList": ["article1"],
+      "createdAt": "2023-01-01T00:00:00.000Z",
+      "updatedAt": "2023-01-01T00:00:00.000Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "Jansi",
+        "bio": null,
+        "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+        "following": false
+      }
+    }
+  }
+}

@@ -99,4 +99,15 @@ export class CommonElements {
 
   cy.get(testIdMap["preview tag list"]).first().should("be.visible");
   }
+  validateElementsInPostCommentPage(){
+    this.validateBrandIcon();
+    cy.get(testIdMap["article title"]).should('be.visible');
+    cy.get(testIdMap["article about"]).should('be.visible');
+    cy.get(testIdMap["article content"]).should('be.visible');
+    cy.get(testIdMap["addition of tags"]).should('be.visible');
+    cy.get(testIdMap["publish article button"])
+    .should('have.text', 'Publish Article')
+    .should("have.css", "background-color", "rgb(92, 184, 92)");
+  }
+
 }
