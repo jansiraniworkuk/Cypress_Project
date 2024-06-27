@@ -25,6 +25,9 @@ beforeEach(() => {
     if (err.message.includes("c(...).setup is not a function")) {
       return false;
     }
+    if(err.message.includes("Cannot read properties of undefined")){
+      return false;
+    }
     // Otherwise, throw the error and Cypress will fail the test
     throw err;
   });

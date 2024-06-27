@@ -30,7 +30,11 @@ Feature: To validate the conduit application
     @conduit @P1 @elements
     Scenario: Create few posts in conduit application
         Given I login to the conduit web page
-        When I create few posts in conduit web page
+        When I create few posts in conduit web page with the below details:
+            | title       | description             | body                                | tags      |
+            | First Post  | This is the first post  | This is the body of the first post  | tag1,tag2 |
+            | Second Post | This is the second post | This is the body of the second post | tag3,tag4 |
+            | Third Post  | This is the third post  | This is the body of the third post  | tag5,tag6 |
         Then I will be able to see them under Global Feed
         And I will be able to see them under Your Feed as well
 
