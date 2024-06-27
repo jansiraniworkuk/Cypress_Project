@@ -173,78 +173,12 @@ When(/^I create few posts in conduit web page with the below details:$/, (dataTa
   commonElements.launchConduit();
   commonElements.signIn();
 
-  // Function to create a post
-  const createPost = (post) => {
-    cy.log('Post data:', JSON.stringify(post, null, 2));
-    return cy.fixture("stubResponses").then((stubResponses) => {
-      const stubPostResponse = { ...stubResponses.createPost };
-      
-      // Ensure stubPostResponse and its article are defined
-      if (!stubPostResponse || !stubPostResponse.article) {
-        throw new Error("The fixture 'stubResponses' does not contain 'createPost.article'");
-      }
-
-      stubPostResponse.article.title = post.title;
-      stubPostResponse.article.description = post.description;
-      stubPostResponse.article.body = post.body;
-      stubPostResponse.article.tagList = post.tags.split(",");
-      
-      cy.log('Stub response:', JSON.stringify(stubPostResponse, null, 2));
-      
-      // Intercept the request and provide a stub response
-      cy.intercept("POST", "/api/articles", {
-        statusCode: 201,
-        body: stubPostResponse,
-      }).as(`createPost-${post.title}`);
-
-      // Create the post
-      cy.get(testIdMap["new post link"]).click();
-      commonElements.validateElementsInPostCommentPage();
-
-      cy.get(testIdMap["article title"])
-        .should('not.be.disabled')
-        .clear()
-        .type(post.title);
-
-      cy.get(testIdMap["article about"])
-        .should('not.be.disabled')
-        .clear()
-        .type(post.description);
-
-      cy.get(testIdMap["article content"])
-        .should('not.be.disabled')
-        .clear()
-        .type(post.body);
-
-      cy.get(testIdMap["addition of tags"])
-        .should('not.be.disabled')
-        .clear()
-        .type(post.tags);
-
-      cy.get(testIdMap["publish article button"])
-        .should('not.be.disabled')
-        .click();
-
-      cy.wait(`@createPost-${post.title}`).then((interception) => {
-        cy.log('Intercepted response:', JSON.stringify(interception.response.body, null, 2));
-      });
-
-      // Ensure form is reset after post creation
-      cy.get(testIdMap["new post link"]).click();
-    });
-  };
-
   // Use a Cypress chain to ensure sequential execution
   cy.wrap(postTable).each((post, index) => {
-    createPost(post);
+    commonElements.createPost(post);
   });
 
-  // Ensure the form is ready for the next post
-  commonElements.validateElementsInPostCommentPage();
 });
-
-
-
 
 Then(/^I will be able to see them under Global Feed$/, () => {
   cy.get(testIdMap["nav link home on sign in page"]).click();

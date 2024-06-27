@@ -110,4 +110,59 @@ export class CommonElements {
     .should("have.css", "background-color", "rgb(92, 184, 92)");
   }
 
+  createPost(post) {
+    cy.log('Post data:', JSON.stringify(post, null, 2));
+    return cy.fixture("stubResponses").then((stubResponses) => {
+      const stubPostResponse = { ...stubResponses.createPost };
+
+      stubPostResponse.article.title = post.title;
+      stubPostResponse.article.description = post.description;
+      stubPostResponse.article.body = post.body;
+      stubPostResponse.article.tagList = post.tags.split(",");
+
+      cy.log('Stub response:', JSON.stringify(stubPostResponse, null, 2));
+
+      // Intercept the request and provide a stub response
+      cy.intercept("POST", "/api/articles", {
+        statusCode: 201,
+        body: stubPostResponse,
+      }).as(`createPost-${post.title}`);
+
+      // Create the post
+      cy.get(testIdMap["new post link"]).click();
+      this.validateElementsInPostCommentPage();
+
+      cy.get(testIdMap["article title"])
+        .should('not.be.disabled')
+        .clear()
+        .type(post.title);
+
+      cy.get(testIdMap["article about"])
+        .should('not.be.disabled')
+        .clear()
+        .type(post.description);
+
+      cy.get(testIdMap["article content"])
+        .should('not.be.disabled')
+        .clear()
+        .type(post.body);
+
+      cy.get(testIdMap["addition of tags"])
+        .should('not.be.disabled')
+        .clear()
+        .type(post.tags);
+
+      cy.get(testIdMap["publish article button"])
+        .should('not.be.disabled')
+        .click();
+
+      cy.wait(`@createPost-${post.title}`).then((interception) => {
+        cy.log('Intercepted response:', JSON.stringify(interception.response.body, null, 2));
+      });
+
+      // Ensure form is reset after post creation
+      cy.get(testIdMap["new post link"]).click();
+      this.validateElementsInPostCommentPage();
+    });
+  }
 }
