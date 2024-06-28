@@ -16,5 +16,75 @@
         "following": false
       }
     }
+  },
+  "articlesList": {
+  "articles": 
+    [
+    {
+      "slug": "First Post ",
+      "title": "First Post ",
+      "description": "This is the first post",
+      "body": "This is the body of the first post",
+      "tagList": [
+          "tag1",
+          "tag2"
+        
+      ],
+      "createdAt": "2024-01-04T00:52:58.597Z",
+      "updatedAt": "2024-01-04T00:52:58.597Z",
+      "favorited": false,
+      "favoritesCount": 35,
+      "author": {
+          "username": "Jansi",
+          "bio": null,
+          "image": "https://api.realworld.io/images/demo-avatar.png",
+          "following": false
+      }
+  },
+  {
+    "slug": "Second Post ",
+    "title": "Second Post ",
+    "description": "This is the second post",
+    "body": "This is the body of the second post",
+    "tagList": [
+        "tag3",
+        "tag4"
+      
+    ],
+    "createdAt": "2024-01-04T00:52:58.597Z",
+    "updatedAt": "2024-01-04T00:52:58.597Z",
+    "favorited": false,
+    "favoritesCount": 35,
+    "author": {
+        "username": "Jansi",
+        "bio": null,
+        "image": "https://api.realworld.io/images/demo-avatar.png",
+        "following": false
+    }
+},
+{
+  "slug": "Third Post ",
+  "title": "Third Post ",
+  "description": "This is the third post",
+  "body": "This is the body of the third post",
+  "tagList": [
+      "tag5",
+      "tag6"
+    
+  ],
+  "createdAt": "2024-01-04T00:52:58.597Z",
+  "updatedAt": "2024-01-04T00:52:58.597Z",
+  "favorited": false,
+  "favoritesCount": 35,
+  "author": {
+      "username": "Jansi",
+      "bio": null,
+      "image": "https://api.realworld.io/images/demo-avatar.png",
+      "following": false
   }
+}
+
+ ],
+  "articlesCount": 3
+}
 }

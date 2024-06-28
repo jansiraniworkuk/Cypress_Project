@@ -166,24 +166,26 @@ Given(/^I login to the conduit web page$/, () => {
   commonElements.signIn();
 });
 
-When(/^I create few posts in conduit web page with the below details:$/, (dataTable) => {
-  // Get the data table from the scenario
-  const postTable = dataTable.hashes();
+When(
+  /^I create few posts in conduit web page with the below details:$/,
+  (dataTable) => {
+    // Get the data table from the scenario
+    const postTable = dataTable.hashes();
 
-  commonElements.launchConduit();
-  commonElements.signIn();
+    commonElements.launchConduit();
+    commonElements.signIn();
 
-  // Use a Cypress chain to ensure sequential execution
-  cy.wrap(postTable).each((post, index) => {
-    commonElements.createPost(post);
-  });
+    // Use a Cypress chain to ensure sequential execution
+    cy.wrap(postTable).each((post, index) => {
+      commonElements.createPost(post);
 
+      
+
+    });
+  }
+);
+
+Then(/^I will be able to see them under Your Feed$/, () => {
+  commonElements.validateCreatedPosts();
 });
 
-Then(/^I will be able to see them under Global Feed$/, () => {
-  cy.get(testIdMap["nav link home on sign in page"]).click();
-});
-
-And(/^I will be able to see them under Your Feed as well$/, () => {
-  cy.contains(testIdMap["global feed tab"]).click();
-});

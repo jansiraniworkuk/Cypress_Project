@@ -128,7 +128,7 @@ export class CommonElements {
         body: stubPostResponse,
       }).as(`createPost-${post.title}`);
 
-      // Create the post
+      // Reset the page
       cy.get(testIdMap["new post link"]).click();
       this.validateElementsInPostCommentPage();
 
@@ -160,9 +160,33 @@ export class CommonElements {
         cy.log('Intercepted response:', JSON.stringify(interception.response.body, null, 2));
       });
 
-      // Ensure form is reset after post creation
-      cy.get(testIdMap["new post link"]).click();
-      this.validateElementsInPostCommentPage();
     });
+  }
+  validateCreatedPosts(){
+    cy.fixture("stubResponses").then((stubResponses) => {
+      const stubGetArticlesResponse = { ...stubResponses.articlesList };
+    
+    cy.intercept(
+      "GET",
+      "api/articles/feed?limit=10&offset=0",
+      {
+        statusCode: 200 ,
+        body: stubGetArticlesResponse,
+      })
+      .as(`showYourFeed`);
+    });
+    cy.get(testIdMap["nav link home on home page"]).click();
+    
+    cy.get(testIdMap["brand icon"]).should("be.visible");
+    cy.wait(`@showYourFeed`);
+  
+    cy.get(testIdMap["article metadata"])
+    .first()
+    .should("be.visible")
+    .and("contain.text", "First Post");
+  
+    cy.get(testIdMap.author)
+    .first()
+    .should("have.text", "Jansi");
   }
 }
