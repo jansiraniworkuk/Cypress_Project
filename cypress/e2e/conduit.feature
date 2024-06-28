@@ -35,7 +35,11 @@ Feature: To validate the conduit application
             | First Post  | This is the first post  | This is the body of the first post  | tag1,tag2 |
             | Second Post | This is the second post | This is the body of the second post | tag3,tag4 |
             | Third Post  | This is the third post  | This is the body of the third post  | tag5,tag6 |
-        Then I will be able to see them under Your Feed
+        Then I will be able to see them under Your Feed with the below details:
+            | title       | author | tags      | likes |
+            | First Post  | Jansi  | tag1,tag2 | 0     |
+            | Second Post | Jansi  | tag3,tag4 | 35    |
+            | Third Post  | Jansi  | tag5,tag6 | 35    |
 
 
 #End of scenario

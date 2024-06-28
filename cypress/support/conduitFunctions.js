@@ -111,7 +111,6 @@ export class CommonElements {
   }
 
   createPost(post) {
-    cy.log('Post data:', JSON.stringify(post, null, 2));
     return cy.fixture("stubResponses").then((stubResponses) => {
       const stubPostResponse = { ...stubResponses.createPost };
 
@@ -162,31 +161,25 @@ export class CommonElements {
 
     });
   }
-  validateCreatedPosts(){
-    cy.fixture("stubResponses").then((stubResponses) => {
-      const stubGetArticlesResponse = { ...stubResponses.articlesList };
-    
-    cy.intercept(
-      "GET",
-      "api/articles/feed?limit=10&offset=0",
-      {
-        statusCode: 200 ,
-        body: stubGetArticlesResponse,
-      })
-      .as(`showYourFeed`);
-    });
-    cy.get(testIdMap["nav link home on home page"]).click();
-    
-    cy.get(testIdMap["brand icon"]).should("be.visible");
-    cy.wait(`@showYourFeed`);
-  
+
+  validateCreatedPosts(data, i){
+    cy.log(data);
     cy.get(testIdMap["article metadata"])
-    .first()
+    .eq(i)
     .should("be.visible")
-    .and("contain.text", "First Post");
+    .and("contain.text", data.title);
   
     cy.get(testIdMap.author)
-    .first()
-    .should("have.text", "Jansi");
+    .eq(i)
+    .should("have.text", data.author);
+
+    cy.get(testIdMap["like button"])
+    .eq(i)
+    .should("contain.text", data.likes);
+
+    cy.get(testIdMap["preview tag list"])
+    .eq(i)
+    .should("contain.text", `tag${i+i+2}`);
+
   }
 }

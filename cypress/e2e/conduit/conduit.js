@@ -182,10 +182,31 @@ When(
       
 
     });
-  }
-);
+  });
 
-Then(/^I will be able to see them under Your Feed$/, () => {
-  commonElements.validateCreatedPosts();
+Then(/^I will be able to see them under Your Feed with the below details:$/, (resultTable) => {
+  const outputTable = resultTable.hashes();
+
+  console.log(outputTable);
+  
+  cy.fixture("stubResponses").then((stubResponses) => {
+    const stubGetArticlesResponse = { ...stubResponses.articlesList };
+  
+  cy.intercept(
+    "GET",
+    "api/articles/feed?limit=10&offset=0",
+    {
+      statusCode: 200 ,
+      body: stubGetArticlesResponse,
+    })
+    .as(`showYourFeed`);
+  });
+  cy.get(testIdMap["nav link home on home page"]).click();
+  
+  cy.get(testIdMap["brand icon"]).should("be.visible");
+  cy.wait(`@showYourFeed`);
+  cy.wrap(outputTable).each((data, index) => {
+    commonElements.validateCreatedPosts(data, index);
+  
 });
-
+});
