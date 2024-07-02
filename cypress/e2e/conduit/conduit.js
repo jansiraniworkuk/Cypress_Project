@@ -161,7 +161,7 @@ And(
   }
 );
 
-Given(/^I login to the conduit web page$/, () => {
+Given(/^I login to the conduit web application$/, () => {
   commonElements.launchConduit();
   commonElements.signIn();
 });
@@ -186,8 +186,6 @@ When(
 
 Then(/^I will be able to see them under Your Feed with the below details:$/, (resultTable) => {
   const outputTable = resultTable.hashes();
-
-  console.log(outputTable);
   
   cy.fixture("stubResponses").then((stubResponses) => {
     const stubGetArticlesResponse = { ...stubResponses.articlesList };
@@ -209,4 +207,43 @@ Then(/^I will be able to see them under Your Feed with the below details:$/, (re
     commonElements.validateCreatedPosts(data, index);
   
 });
+});
+
+When(/^I navigate to the global feed tab$/, () => {
+  
+  
+  cy.intercept('GET', '/api/articles?limit=10&offset=0').as('getArticles');
+
+  cy.contains(testIdMap["global feed tab"]).click();
+  cy.url().should('include','/#');
+
+});
+
+Then(/^UI will sent the valid GET request to get the articles$/, () => {
+ 
+  const handleRequest = (alias) => {
+  cy.wait(alias).then((interception) => {
+    if(interception.response.statusCode === 307){
+      cy.log('Redirect response received');
+      expect(interception.response.statusCode).to.eq(307);
+      expect(interception.request.method).to.eq('GET');
+    }
+    else if(interception.response.statusCode === 200){
+      cy.log('200 response received');
+      expect(interception.response.statusCode).to.eq(200);
+      expect(interception.request.method).to.eq('GET');
+      expect(interception.response.headers['content-type']).to.include('application/json');
+      expect(interception.response.body.articlesCount).to.eq(251);
+    }
+  });
+};
+for (let i = 0; i <2; i++) {
+  handleRequest('@getArticles');
+}
+  
+});
+
+And(/^Conduit application can list the articles correctly under global feed$/, () => {
+  
+  cy.get(testIdMap["article metadata"]).should('have.length.lessThan', 11)
 });

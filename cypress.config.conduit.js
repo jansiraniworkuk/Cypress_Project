@@ -12,7 +12,7 @@ module.exports = defineConfig({
     },
     env: {
       // Run only scenarios with the @connectivity tag
-      TAGS: '@conduit', 
+      TAGS: '@backend', 
       step_definitions: "cypress/e2e/conduit/"
     },
     baseUrl: "https://react-redux.realworld.io/",

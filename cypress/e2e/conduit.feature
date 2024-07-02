@@ -29,7 +29,7 @@ Feature: To validate the conduit application
 
     @conduit @P1 @elements
     Scenario: Create few posts in conduit application
-        Given I login to the conduit web page
+        Given I login to the conduit web application
         When I create few posts in conduit web page with the below details:
             | title       | description             | body                                | tags      |
             | First Post  | This is the first post  | This is the body of the first post  | tag1,tag2 |
@@ -41,5 +41,11 @@ Feature: To validate the conduit application
             | Second Post | Jansi  | tag3,tag4 | 35    |
             | Third Post  | Jansi  | tag5,tag6 | 35    |
 
-
+    @conduit @backend @P1
+    Scenario: Validate the backend requests are posted correctly
+        Given I login to the conduit web application
+        When I navigate to the global feed tab
+        Then UI will sent the valid GET request to get the articles
+        And Conduit application can list the articles correctly under global feed
+        
 #End of scenario

@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 1,
     "failures": 0,
-    "start": "2024-06-27T13:27:57.509Z",
-    "end": "2024-06-27T13:27:57.628Z",
-    "duration": 119,
+    "start": "2024-07-02T16:12:59.328Z",
+    "end": "2024-07-02T16:12:59.448Z",
+    "duration": 120,
     "testsRegistered": 1,
     "passPercent": null,
     "pendingPercent": 100,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "a393ad26-ed0d-4430-b57a-ce702f3e15b2",
+      "uuid": "070a7720-2c04-4f83-ae80-4502a8a0d610",
       "title": "",
       "fullFile": "cypress/e2e/orangeHRM2.feature",
       "file": "cypress/e2e/orangeHRM2.feature",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "75d7076d-f206-4bdf-9ead-8b9c09225549",
+          "uuid": "ae8e74fb-651c-48ef-80e8-443ca41b6fe1",
           "title": "Validate Orange HRM demo site",
           "fullFile": "",
           "file": "",
@@ -47,8 +47,8 @@
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {},
-              "uuid": "54f632b1-2d52-4450-a229-c4c21de2796d",
-              "parentUUID": "75d7076d-f206-4bdf-9ead-8b9c09225549",
+              "uuid": "85a68cbf-8f8f-46b6-8aae-6d8c1e77d3f4",
+              "parentUUID": "ae8e74fb-651c-48ef-80e8-443ca41b6fe1",
               "isHook": false,
               "skipped": false
             }
@@ -57,7 +57,7 @@
           "passes": [],
           "failures": [],
           "pending": [
-            "54f632b1-2d52-4450-a229-c4c21de2796d"
+            "85a68cbf-8f8f-46b6-8aae-6d8c1e77d3f4"
           ],
           "skipped": [],
           "duration": 52,
