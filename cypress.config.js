@@ -25,7 +25,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 10000,
   watchForFileChanges: true,
   //Enable videos if it is required - default value is true
-  video: false,
+  video: true,
   reporter: "mochawesome",
   reporterOptions: {
       charts: true,

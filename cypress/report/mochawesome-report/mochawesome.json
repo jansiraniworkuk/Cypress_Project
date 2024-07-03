@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 1,
     "failures": 0,
-    "start": "2024-07-02T16:12:59.328Z",
-    "end": "2024-07-02T16:12:59.448Z",
-    "duration": 120,
+    "start": "2024-07-03T19:56:02.410Z",
+    "end": "2024-07-03T19:56:02.535Z",
+    "duration": 125,
     "testsRegistered": 1,
     "passPercent": null,
     "pendingPercent": 100,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "070a7720-2c04-4f83-ae80-4502a8a0d610",
+      "uuid": "531b5c90-7a6c-434a-a58b-1ca0820a71cb",
       "title": "",
       "fullFile": "cypress/e2e/orangeHRM2.feature",
       "file": "cypress/e2e/orangeHRM2.feature",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ae8e74fb-651c-48ef-80e8-443ca41b6fe1",
+          "uuid": "a906ed3e-8ff0-419e-b99c-f0f94a557c17",
           "title": "Validate Orange HRM demo site",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Login to the orange HRM demo site with valid credentials",
               "fullTitle": "Validate Orange HRM demo site Login to the orange HRM demo site with valid credentials",
               "timedOut": null,
-              "duration": 52,
+              "duration": 90,
               "state": "pending",
               "speed": null,
               "pass": false,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {},
-              "uuid": "85a68cbf-8f8f-46b6-8aae-6d8c1e77d3f4",
-              "parentUUID": "ae8e74fb-651c-48ef-80e8-443ca41b6fe1",
+              "uuid": "d9432e11-3a9f-47e1-9b4c-962a2679a339",
+              "parentUUID": "a906ed3e-8ff0-419e-b99c-f0f94a557c17",
               "isHook": false,
               "skipped": false
             }
@@ -57,10 +57,10 @@
           "passes": [],
           "failures": [],
           "pending": [
-            "85a68cbf-8f8f-46b6-8aae-6d8c1e77d3f4"
+            "d9432e11-3a9f-47e1-9b4c-962a2679a339"
           ],
           "skipped": [],
-          "duration": 52,
+          "duration": 90,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

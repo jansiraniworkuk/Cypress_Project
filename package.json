@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo I am the test",
+    "test-conduit": "npx cypress open --config-file cypress.config.conduit.js",
     "hello": "echo hello world",
     "prehello": "echo I am pretest",
     "posthello": "echo I am posttest",
